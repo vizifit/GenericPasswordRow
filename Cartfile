@@ -1,1 +1,1 @@
-github "xmartlabs/Eureka" ~> 3.0
+github "xmartlabs/Eureka" "feature/Xcode9-Swift4"
