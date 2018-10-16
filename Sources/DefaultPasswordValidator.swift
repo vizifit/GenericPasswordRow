@@ -18,13 +18,13 @@ public struct PasswordRule {
 
 open class DefaultPasswordValidator: PasswordValidator {
 
-    open let maxStrength = 4.0
+    public let maxStrength = 4.0
 
     let rules: [PasswordRule] = [
         PasswordRule(hint: "Please enter a lowercase letter") { $0.satisfiesRegexp("[a-z]") },
         PasswordRule(hint: "Please enter a number") { $0.satisfiesRegexp("[0-9]") },
         PasswordRule(hint: "Please enter an uppercase letter") { $0.satisfiesRegexp("[A-Z]") },
-        PasswordRule(hint: "At least 6 characters") { $0.characters.count > 5 }
+        PasswordRule(hint: "At least 6 characters") { $0.count > 5 }
     ]
 
     open func strengthForPassword(_ password: String) -> Double {

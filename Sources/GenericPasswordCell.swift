@@ -28,7 +28,7 @@ open class GenericPasswordCell: _FieldCell<String>, CellType {
         }
     }
 
-    open var dynamicHeight = (collapsed: UITableViewAutomaticDimension, expanded: UITableViewAutomaticDimension) {
+    open var dynamicHeight = (collapsed: UITableView.automaticDimension, expanded: UITableView.automaticDimension) {
         didSet {
             let value = dynamicHeight
             height = { [weak self] in
@@ -37,14 +37,18 @@ open class GenericPasswordCell: _FieldCell<String>, CellType {
         }
     }
 
-    public required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    public required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
+//    required public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+//        fatalError("init(style:reuseIdentifier:) has not been implemented")
+//    }
+    
     open override func setup() {
         super.setup()
         dynamicHeight = (collapsed: 48, expanded: 64)
@@ -70,7 +74,7 @@ open class GenericPasswordCell: _FieldCell<String>, CellType {
         textField.placeholder = genericPasswordRow.placeholder
     }
 
-    open func togglePasswordVisibility() {
+    @objc open func togglePasswordVisibility() {
         textField.isSecureTextEntry = !textField.isSecureTextEntry
         setVisibilityButtonImage()
         // workaround to update cursor position
